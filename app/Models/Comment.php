@@ -10,13 +10,18 @@ class Comment extends Model
     /** @use HasFactory<\Database\Factories\CommentFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'body',
+        'task_id',
+        'user_id'
+    ];
     /**
      *
      * Summary: Get the task that this comment belongs to.
      *
      * @return BelongsTo
      */
-    public function task(): BelongsTo
+    public function task()
     {
         return $this->belongsTo(Task::class);
     }
@@ -27,7 +32,7 @@ class Comment extends Model
      *
      * @return BelongsTo
      */
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

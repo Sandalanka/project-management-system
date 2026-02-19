@@ -64,7 +64,7 @@ class User extends Authenticatable
      *
      * @return HasMany
      */
-    public function tasks(): HasMany
+    public function tasks()
     {
         return $this->hasMany(Task::class, 'assigned_to');
     }
@@ -75,7 +75,7 @@ class User extends Authenticatable
      *
      * @return HasMany
      */
-    public function comments(): HasMany
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }

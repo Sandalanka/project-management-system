@@ -16,7 +16,7 @@ class Task extends Model
      *
      * @return BelongsTo
      */
-    public function project(): BelongsTo
+    public function project()
     {
         return $this->belongsTo(Project::class);
     }
@@ -27,7 +27,7 @@ class Task extends Model
      *
      * @return BelongsTo
      */
-    public function assignedUser(): BelongsTo
+    public function assignedUser()
     {
         return $this->belongsTo(User::class, 'assigned_to');
     }
@@ -38,7 +38,7 @@ class Task extends Model
      *
      * @return HasMany
      */
-    public function comments(): HasMany
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }
