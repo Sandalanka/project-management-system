@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Constant\Role;
 
 return new class extends Migration
 {
@@ -16,7 +17,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone')->nullable();
             $table->string('password');
+            $table->enum('role', [Role::ROLE_ADMIN, Role::ROLE_MANAGER, Role::ROLE_USER])
+                ->default(Role::ROLE_USER);
             $table->rememberToken();
             $table->timestamps();
         });
