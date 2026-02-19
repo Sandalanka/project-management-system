@@ -16,7 +16,7 @@ class Project extends Model
      *
      * @return BelongsTo
      */
-    public function creator(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class, 'created_by');
     }
@@ -27,7 +27,7 @@ class Project extends Model
      *
      * @return HasMany
      */
-    public function tasks(): HasMany
+    public function tasks()
     {
         return $this->hasMany(Task::class);
     }

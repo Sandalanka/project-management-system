@@ -5,8 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Constant\Status;
-use Constant\Message;
+use App\Constant\Status;
+use App\Constant\Messages;
 
 class RoleMiddleware
 {
@@ -21,7 +21,7 @@ class RoleMiddleware
 
         if (!in_array($user->role, $roles)) {
             return response()->json([
-                'message' => Message::FORBIDDEN_REQUEST
+                'message' => Messages::FORBIDDEN_REQUEST
             ], Status::STATUS_CODE_FORBIDDEN);
         }
 
