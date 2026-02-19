@@ -57,7 +57,8 @@ abstract class Controller
                                      string    $message = Messages::GENERAL_RESPONSE_ERROR_MESSAGE,
                                      int       $statusCode = Status::STATUS_CODE_INTERNAL_SERVER_ERROR): JsonResponse
     {
-        $response = [
+    
+         $response = [
             'status' => Status::STATUS_FAILED,
             'message' => $message,
             'timestamp' => now()->toDateTimeString()
@@ -67,10 +68,13 @@ abstract class Controller
             $response['errors'] = $exception->getMessage();
         }
 
-        response()->json($response, $statusCode, [
-                'Access-Control-Allow-Origin' => '*',
-                'Content-Type' => 'application/json'
-            ]
-        );
+        if (!empty($data)) {
+            $response['data'] = $data;
+        }
+
+        return response()->json($response, $statusCode, [
+            'Access-Control-Allow-Origin' => '*',
+            'Content-Type' => 'application/json'
+        ]);
     }
 }
